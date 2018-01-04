@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block logo %}
+<a class="navbar-brand home" href="/vistaUsuario">
+{% endblock %}
+
+
+{% block opciones %}
+<ul class="nav navbar-nav">
+	<li class="active"><a href="/vistaUsuario">Menú principal </a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+	<li><a href="/cerrar"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
+</ul>
+
+
+{% endblock %}
+
+{% block buscador %}
+
+{%endblock%}
+{% block content %}
+<!-- *** MENUS***-->
+<div class="col-md-3">
+    
+    <div class="panel panel-default sidebar-menu">
+        <div class="panel-heading">
+            <h3 class="panel-title">Categorias</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked category-menu">
+            	{% block opcionesUsuario%}
+                <li class="active"><a href="/vistaUsuario">Menú principal</a></li>
+                <li><a href="/verPerfil">Mi perfil</a></li>
+                <li><a href="/videosSubidos">Ver subidos por mí</a></li>
+                <li><a href="/subir">Subir video</a></li>
+                <li><a href="/importar">Importar usuarios</a></li>
+                {% endblock %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+<!-- *** MOSTRAR POR***-->
+<div class="col-md-9">
+	{% block contentUsuario %}
+
+    <div class="box info-bar">
+        <div class="row" style="text-align:center">
+            <div class="col-sm-4">
+                <form method="post" action="/ordenarRecientes/">
+                    <button class="btn btn-primary">Más recientes</button>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <form method="post" action="/ordenarVistos/">
+                    <button class="btn btn-primary">Más vistos</button>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <form method="post" action="/ordenarBuscados/">
+                    <button class="btn btn-primary">Más buscados</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class ="container">
+        <form class="navbar-form" action="/buscar" method="get">
+            <div class="input-group">
+              <input type="text" class="form-control" name="buscador">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="row products">
+    {% for video in videos%}
+    <a href="/verVideo/{{video.id}}">
+	    <div class="col-md-4 col-sm-6">
+	        <div class="product">
+	        	<video width="100%" height="auto" maxwidth:100% >
+	        		<source src="../media/{{video.archivo}}" type="video/mp4"> Your browser does not support the video tag.
+				</video> 
+                <div class="text">
+                    <h3>{{video.titulo}}</h3>
+                    <p class="datoVideo">{{video.resumen}}</p>
+                    <p class="datoVideo"><strong>Autor: </strong> {{video.autor.nombre}}</p>
+                    <p class="datoVideo"><strong>Subido: </strong>{{video.fecha}}</p>
+                    <p class="datoVideo">Visto {{video.numeroVisto}} veces</p>
+                    <p class="datoVideo">Buscado {{video.numeroBuscado}} veces</p>
+                </div>
+                
+	        </div>
+	    </div>
+    </a>
+    {%endfor%}
+    </div>
+    {%endblock%}
+</div>
+{% endblock %}

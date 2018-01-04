@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block opciones %}
+	<li><a href= "/home">Home</a></li>
+  	<li><a href="/quienes">¿Quienes somos?</a></li>
+  	<li><a href="/iniciar" >Iniciar sesion</a></li>
+  	<li class="active"><a href="/registrar" >Crear una cuenta</a></li>
+  	<li><a href="/contactar" >Contacto</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <h1>Crear una cuenta</h1>
+
+        <p class="lead">¿Aún no estás registrado?</p>
+        <div style="padding-right:5%; padding-left: 5%">
+        	<p>VideoTool es un servicio gratuito que te permite ver videos, sin embargo, te informamos que registrarte es gratuito y podrás gozar de beneficios extras como guardar tus videos favoritos, subir videos, comentarlos e incluso compartirlos con tus amigos. 
+        	Solo tomará unos minutos</p>
+        	<p class="text-muted">Si tienes cualquier duda, por favor <a href="/contactar">contáctanos</a>, nuestro personal lo atenderá inmediatamente.</p>
+        </div>
+        <hr>
+        <div class="contenedor-form">
+		    <form method="post" action="/accionRegistrar/">
+		    	{% csrf_token %}
+		        <div class="form-group">
+		            <label for="name">Nombre</label>
+		            <input type="text" class="form-control" name="nombre">
+		        </div>
+		        <div class="form-group">
+					<label >Nombre de usuario</label>
+					<input class="form-control" type="text" name="username">
+				</div>
+				<div class="form-group">
+					<label>Contraseña</label>
+					<input type="password" name="password" class="form-control" data-toggle="password">
+				</div>
+				<div class="form-group">
+					<label >Correo</label>
+					<input class="form-control" type="text" name="correo">
+				</div>
+		        <div class="text-center">
+		            <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Registrar</button>
+		        </div>
+		    </form>
+		</div>
+    </div>
+{% endblock %}

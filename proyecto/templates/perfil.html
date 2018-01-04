@@ -1,0 +1,39 @@
+{% extends 'vistaUsuario.html' %}
+
+{% block opcionesUsuario%}
+	<li><a href="/vistaUsuario">Menú principal</a></li>
+    <li class="active"><a href="/verPerfil">Mi perfil</a></li>
+    <li><a href="/videosSubidos">Ver subidos por mí</a></li>
+    <li><a href="/subir">Subir video</a></li>
+    <li><a href="/importar">Importar usuarios</a></li>
+{% endblock %}
+{% block contentUsuario %}
+    <div class="box">
+        <h1 class ="titulos">Mi perfil</h1>
+        {% if perfil %}
+        <div class="contenedor-form">
+	        <div class="form-group">
+	            <label for="name">Nombre</label>
+	            <input readonly="readonly" type="text" class="form-control" name="nombre" value = "{{ perfil.nombre }}">
+	        </div>
+	        <div class="form-group">
+				<label >Nombre de usuario</label>
+				<input readonly="readonly" class="form-control" type="text" name="username" value = "{{ perfil.username }}">
+			</div>
+			<div class="form-group">
+				<label>Contraseña</label>
+				<input readonly="readonly" type="password" id="password" name="password" class="form-control" data-toggle="password" value = "{{ perfil.contrasena }}">
+			</div>
+	        <div class="form-group">
+				<label >Correo</label>
+				<input readonly="readonly" class="form-control" type="text" name="correo" value = "{{ perfil.correo }}">
+			</div>
+		</div>
+		
+		{%endif%}
+
+    </div>
+    <script type="text/javascript">
+		$("#password").password('toggle');
+	</script>
+{% endblock %}

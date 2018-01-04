@@ -1,0 +1,45 @@
+{% extends 'vistaUsuario.html' %}
+
+{% block opcionesUsuario%}
+	<li><a href="/vistaUsuario">Menú principal</a></li>
+    <li><a href="/verPerfil">Mi perfil</a></li>
+    <li class="active"><a href="/videosSubidos">Ver subidos por mí</a></li>
+    <li><a href="/subir">Subir video</a></li>
+    <li><a href="/importar">Importar usuarios</a></li>
+{% endblock %}
+{% block contentUsuario %}
+	{%if video%}
+    <div class="box">
+    	<div class="pull-left">
+            <a href="/videosSubidos" class="btn btn-default"><i class="fa fa-chevron-left"></i>Regresar a mis videos</a>
+        </div>
+        <br/>
+    	<div>
+	        <h1 class ="titulos">{{video.titulo}}</h1>
+		</div>
+		<div class="col-md-9 col-sm-12">
+	        <video width="100%" height="auto" maxwidth:100% autoplay maxwidth:100% controls>
+	    		<source src="../../media/{{video.archivo}}" type="video/mp4"> Your browser does not support the video tag.
+			</video> 
+			<label class="labelVisto">Visto {{ video.numeroVisto}} veces</label>
+		</div>
+        <div class="col-md-3 col-sm-12 box">
+        	<div>
+            <h4 for="name"><strong>Descripcion</strong></h4>
+	        <p><strong>"</strong>{{ video.resumen}}<strong>"</strong></p>
+
+			<h4><strong>Autor</strong></h4>
+			<p>{{ video.autor.nombre }}</p>
+
+			<h4><strong>Subido el</strong></h4>
+			<p>{{ video.fecha }}</p>
+			</div>
+		</div>
+		<p>.</p>
+    </div>
+	{%else%}
+	<div class="box">
+        <h1 class ="titulos">Video no seleccionado</h1>
+    </div>
+    {%endif%}
+{% endblock %}

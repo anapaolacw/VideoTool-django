@@ -1,0 +1,37 @@
+{% extends 'vistaUsuario.html' %}
+{% block opcionesUsuario%}
+    <li><a href="/vistaUsuario">Menú principal</a></li>
+    <li><a href="/verPerfil">Mi perfil</a></li>
+    <li  class="active"><a href="/videosSubidos">Ver subidos por mí</a></li>
+    <li><a href="/subir">Subir video</a></li>
+    <li><a href="/importar">Importar usuarios</a></li>
+{% endblock %}
+
+{% block contentUsuario %}
+<div class="box">
+    <h1 class ="titulos">Mis videos</h1>
+</div>
+    {% for video in videos%}
+    <a href="/verVideoMio/{{video.id}}">
+	    <div class="col-md-6 col-sm-12">
+	        <div class="product">
+	        	<video width="100%" height="auto" maxwidth:100%>
+	        		<source src="../media/{{video.archivo}}" type="video/mp4"> Your browser does not support the video tag.
+				</video> 
+                <div class="text">
+                    <h3 class="tituloVideo">{{video.titulo}}</h3>
+                    {% if video.resumen%}
+                    <p class="datoVideo subtitulo"><strong>Resumen:</strong></p>
+                    <p class="datoVideo subtitulo" >{{video.resumen}}</p>
+                    {%endif%}
+                    <p class="datoVideo subtitulo"><strong>Subido el:  </strong>{{video.fecha}}</p>
+                    <p class="datoVideo subtitulo">Buscado {{video.numeroBuscado}} veces</p>
+                    <p class="datoVideo subtitulo">{{video.numeroVisto}} reproducciones</p>
+                </div>
+                
+	        </div>
+	    </div>
+    </a>
+    {%endfor%}
+
+{%endblock%}

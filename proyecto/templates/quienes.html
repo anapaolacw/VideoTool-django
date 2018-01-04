@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block opciones %}
+<li><a href= "/home">Home</a></li>
+<li class="active"><a href="/quienes">¿Quienes somos?</a></li>
+<li><a href="/iniciar" >Iniciar sesion</a></li>
+<li><a href="/registrar" >Crear una cuenta</a></li>
+<li><a href="/contactar" >Contacto</a></li>
+{% endblock %}
+{% block content %}
+<div class="box">
+	<h1>  ¡Bienvenido!    </h1>
+	<p class="lead">¿Quienes somos?</p>
+	<div style="padding-right:5%; padding-left: 5%">
+	    <p>Somos una pequeña empresa, dueña de VideoTool, el cual es es un servicio gratuito que te permite ver videos y que además cuenta con algunas opciones extra para aquellos que tienen una cuenta. Entre estas opciones extra estan: guardar tus videos favoritos, subir videos e incluso compartirlos con tus amigos.</p>
+	    <p class="text-muted">Si ya tienes una cuenta <a href="/iniciar"> inicia sesión</a>, sino <a href="/registrar"> regístrate</a>.</p>
+	    <p class="text-muted">Si tienes cualquier duda, por favor <a href="/contactar">contáctanos</a>, nuestro personal lo atenderá inmediatamente.</p>
+	</div>
+</div>
+{%endblock%}
