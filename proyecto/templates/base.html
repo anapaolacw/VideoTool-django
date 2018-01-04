@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- styles -->
+  {% load static%}
+  
+  <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/style.default.css' %}" type="text/css" id="theme-stylesheet">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css">
+
+  <title>Videotool </title>
+</head>
+<body>
+
+<!-- *** NAVBAR ***-->
+<div class="navbar navbar-default yamm" role="navigation" id="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      {% block logo %}
+      <a class="navbar-brand home" href="/home">
+      {% endblock %}
+          <img src="{% static 'img/logo.png' %}" alt="VideoTool logo" class="hidden-xs">
+          <img src="{% static 'img/logo-small.png' %}" alt="VideoTool logo sm" class="visible-xs"><span class="sr-only">VideoTool - homepage</span>
+      </a>
+      <div class="navbar-collapse collapse" id="navigation">
+        <ul class="nav navbar-nav navbar-left">
+          {% block opciones %}
+          <li class="active"><a href= "/home">Home</a></li>
+          <li><a href="/quienes">¿Quienes somos?</a></li>
+          <li><a href="/iniciar" >Iniciar sesion</a></li>
+          <li><a href="/registrar" >Crear una cuenta</a></li>
+          <li><a href="/contactar" >Contacto</a></li>
+          {% endblock %}
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+      <div class="navbar-buttons">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-align-justify"></i>
+        </button>
+      </div>
+    {% block extra %}
+    {%endblock%}
+    </div>
+
+
+  </div>
+</div>
+<!-- *** CONTENIDO *** -->
+
+<div id="all">
+  <div id="content">
+    <div class="container">
+      {% block content %}
+      <div class="col-md-3">
+        <div class="panel panel-default sidebar-menu">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ordenar por</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked category-menu">
+                  {% block opcionesUsuario%}
+                    <li><a href="/home">Defecto</a></li>
+                    <li><a href="/masRecientes">Más reciente</a></li>
+                    <li><a href="/masVistos">Más vistos</a></li>
+                    <li><a href="/masBuscados">Más buscados</a></li>
+                    {% endblock %}
+                </ul>
+
+            </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="box">
+          {% if orden %}
+          <h1>{{orden}}</h1>
+          {%else%}
+          <h1>Videos</h1>
+          {%endif%}
+          <div class ="container">
+            <form class="navbar-form" action="/busqueda" method="get">
+              <div class="input-group">
+                <input type="text" class="form-control" name="buscador">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+            </form>
+          </div>
+
+          <div class="row products">
+          {% for video in videos%}
+          <a href="/verVideo/{{video.id}}">
+            <div class="col-md-4 col-sm-6">
+              <div class="product">
+                <video width="100%" height="auto" maxwidth:100% >
+                  <source src="../media/{{video.archivo}}" type="video/mp4"> Your browser does not support the video tag.
+                </video> 
+                <div class="text">
+                    <h3>{{video.titulo}}</h3>
+                    <p class="datoVideo">{{video.resumen}}</p>
+                    <p class="datoVideo"><strong>Autor: </strong> {{video.autor.nombre}}</p>
+                    <p class="datoVideo"><strong>Subido: </strong>{{video.fecha}}</p>
+                    <p class="datoVideo">Visto {{video.numeroVisto}} veces</p>
+                    <p class="datoVideo">Buscado {{video.numeroBuscado}} veces</p>
+                </div>
+              </div>
+            </div>
+          </a>
+          {%endfor%}
+          </div>
+        </div>
+         
+        </div> 
+        {%endblock%}
+    </div>
+  </div>
+</div>
+
+<!-- *** SCRIPTS TO INCLUDE ***-->
+  {% block scriptsExtra%}
+  {% endblock %}
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.cookie.js' %}"></script>
+  <script src="{% static 'js/waypoints.min.js' %}"></script>
+  <script src="{% static 'js/modernizr.js' %}"></script>
+  <script src="{% static 'js/bootstrap-hover-dropdown.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/front.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+
+</body>
+</html>

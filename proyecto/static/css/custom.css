@@ -1,0 +1,52 @@
+/** Your theme modifications here **/
+.contenedor-form{
+	padding-top: 3%;
+	padding-bottom: 3%;
+	padding-right: 20%;
+	padding-left: 20%;
+}
+.titulos{
+	text-align: center;
+}
+.upload-btn-wrapper {
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: inline-block;
+
+}
+.a{
+	color: #FF0082;
+}
+.btn-primary{
+	background-color: #FF0082;
+	border-color:#E60A86;
+}
+.tituloVideo{
+	margin-bottom: 5%;
+}
+.subtitulo{
+	margin-bottom: 2%
+}
+.videoAgrandado{
+	margin-left: 5%;
+	margin-right: 5%;
+	width: 100%;
+}
+.labelVisto{
+	text-align:center;
+	float: right;
+	font-size: 13px;
+}
+.datoVideo{
+	color:black;
+}
+.error{
+    color: red;
+    text-align: center;
+}
+.input-group{
+	width:80%;
+}

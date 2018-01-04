@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block opciones %}
+	<li><a href= "/home">Home</a></li>
+  	<li><a href="/quienes">¿Quienes somos?</a></li>
+  	<li class="active"><a href="/iniciar" >Iniciar sesion</a></li>
+  	<li ><a href="/registrar" >Crear una cuenta</a></li>
+  	<li><a href="/contactar" >Contacto</a></li>
+{% endblock %}
+
+
+{% block content %}
+<div class="box">
+    <h1>Iniciar sesión</h1>
+
+    <p class="lead">¿Ya tienes una cuenta?</p><p class="text-muted">Sino <a href="/registrar"> regístrate</a></p>
+    <div class="contenedor-form">
+	    {% if error %}
+	        <div style="color:red">{{ error }}</div>
+	    {% endif %}
+		<form method="post" action="/accionIniciar/">
+			{% csrf_token %}
+			<div class="form-group">
+				<label>Nombre de usuario</label>
+				<input class="form-control" type="text" name="username">
+			</div>
+			<div class="form-group">
+				<label>Contraseña</label>
+				<input type="password" name="contrasena" class="form-control" data-toggle="password">
+			</div>
+			<div class="text-center">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Iniciar</button>
+            </div>
+    	</form>
+    </div>
+    
+</div>
+{% endblock %}

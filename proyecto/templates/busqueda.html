@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-3">
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ordenar por</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked category-menu">
+          {% block opcionesUsuario%}
+            <li><a href="/home">Defecto</a></li>
+            <li><a href="/masRecientes">Más reciente</a></li>
+            <li><a href="/masVistos">Más vistos</a></li>
+            <li><a href="/masBuscados">Más buscados</a></li>
+            {% endblock %}
+        </ul>
+
+    </div>
+</div>
+</div>
+<div class="col-md-9">
+    <div class="box">  
+    <h1 class ="titulos">Resultado de búsqueda</h1>
+    <div class="pull-left">
+        <a href="/home" class="btn btn-default"><i class="fa fa-chevron-left"></i>Regresar a videos</a>
+    </div>
+    </br></br></br>
+    <div class="row products">
+        {% for video in busqueda%}
+        <a href="/verVideo/{{video.id}}">
+            <div class="col-md-4 col-sm-6">
+                <div class="product">
+                    <video width="100%" height="auto" maxwidth:100% >
+                        <source src="../media/{{video.archivo}}" type="video/mp4"> Your browser does not support the video tag.
+                    </video> 
+                    <div class="text">
+                        <h3>{{video.titulo}}</h3>
+                        <p class="datoVideo">{{video.resumen}}</p>
+                        <p class="datoVideo"><strong>Autor: </strong> {{video.autor.nombre}}</p>
+                        <p class="datoVideo"><strong>Subido: </strong>{{video.fecha}}</p>
+                        <p class="datoVideo">Visto {{video.numeroVisto}} veces</p>
+                        <p class="datoVideo">Buscado {{video.numeroBuscado}} veces</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </a>
+        {%endfor%}
+    </div>
+ 
+</div> 
+{%endblock%}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cuentas>
+	<cuenta>
+        <nombre>Usuario</nombre>
+        <username>usuario</username>
+        <contrasena>usuario</contrasena>
+        <correo>usuario@gmail.com</correo>
+    </cuenta>
+    <cuenta>
+        <nombre>Usuario 1</nombre>
+        <username>usuario1</username>
+        <contrasena>usuario1</contrasena>
+        <correo>usuario1@gmail.com</correo>
+    </cuenta>
+    <cuenta>
+        <nombre>Usuario 2</nombre>
+        <username>usuario2</username>
+        <contrasena>usuario2</contrasena>
+        <correo>usuario2@gmail.com</correo>
+    </cuenta>
+    <cuenta>
+        <nombre>Usuario 3</nombre>
+        <username>usuario3</username>
+        <contrasena>usuario3</contrasena>
+        <correo>usuario3@gmail.com</correo>
+    </cuenta>
+</cuentas>

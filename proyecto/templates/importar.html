@@ -1,0 +1,20 @@
+{% extends 'vistaUsuario.html' %}
+
+{% block opcionesUsuario%}
+	<li><a href="/vistaUsuario">Menú principal</a></li>
+    <li><a href="/verPerfil">Mi perfil</a></li>
+    <li><a href="/videosSubidos">Ver subidos por mí</a></li>
+    <li><a href="/subir">Subir video</a></li>
+    <li class="active"><a href="/importar">Importar usuarios</a></li>
+{% endblock %}
+{% block contentUsuario %}
+	{%if elementosAgregados%}
+    <div class="box">
+    	<h1>Se agregaron {{elementosAgregados}} elementos a la BD</h1>
+	</div>
+    {%endif%}
+    {%if error%}
+    <p class="error">*{{error}}</p>
+    {%endif%}
+	
+{% endblock %}

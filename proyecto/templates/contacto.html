@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block opciones %}
+    <li><a href= "/home">Home</a></li>
+    <li><a href="/quienes">¿Quienes somos?</a></li>
+    <li><a href="/iniciar" >Iniciar sesion</a></li>
+    <li><a href="/registrar" >Crear una cuenta</a></li>
+    <li class="active"><a href="/contactar" >Contacto</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="box" id="contact">
+    <h1>Contacto</h1>
+
+    <p class="lead">¿Necesitas ayuda? Nuestro personal lo atenderá inmediatamente.</p>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <h3><i class="fa fa-map-marker"></i> Dirección</h3>
+            <p>Avenida Lázaro Cárdenas #87
+                <br>Xalapa, Veracruz
+                <br>
+                <strong>México</strong>
+            </p>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <h3><i class="fa fa-phone"></i> Teléfono</h3>
+            <p><strong>+521 228 1871932 </strong>
+            </p>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <h3><i class="fa fa-envelope"></i> Correo</h3>
+            <p><strong><a href="mailto:">videotool@gmail.com</a></strong></p>
+        </div>
+        <!-- /.col-sm-4 -->
+    </div>
+</div>
+{%endblock%}
